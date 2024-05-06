@@ -11,7 +11,7 @@ const Details = () => {
     };
     return (
         <div className="w-[80%] m-auto p-5">
-            <Link to="/recipes" class="text-3xl ri-arrow-left-line"></Link>
+            <Link to="/recipes" className="text-3xl ri-arrow-left-line"></Link>
             <div className="details w-full flex h-[75vh] mt-3">
                 <div className="dets w-[50%] p-[3%] shadow">
                     <img className="" src={dish.image} alt="" />
