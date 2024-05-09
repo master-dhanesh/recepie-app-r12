@@ -2,8 +2,10 @@ import { nanoid } from "nanoid";
 import React, { useContext, useState } from "react";
 import { Recipecontext } from "../contexts/RecipeContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+    const navigate = useNavigate();
     const [recipes, setrecipes] = useContext(Recipecontext);
 
     const [image, setimage] = useState("");
@@ -30,6 +32,7 @@ const Create = () => {
             JSON.stringify([...recipes, newRecipe])
         );
         toast.success("Recipe Created Successfully!");
+        navigate("/recipes");
     };
     return (
         <form onSubmit={SubmitHandler} className="w-[70%] m-auto  pb-5">
