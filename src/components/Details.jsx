@@ -31,7 +31,7 @@ const Details = () => {
                     <p className="text-zinc-400">{recipe.description}</p>
                     <div className="flex justify-between py-10 px-5">
                         <Link
-                            to="/update-recipe"
+                            to={`/update-recipe/${params.id}`}
                             className="text-blue-400 border-blue-400 border py-2 px-5"
                         >
                             Update

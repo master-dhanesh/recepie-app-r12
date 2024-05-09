@@ -4,7 +4,6 @@ export const Recipecontext = createContext(null);
 
 const RecipeContext = (props) => {
     const [recipes, setrecipes] = useState([]);
-
     useEffect(() => {
         setrecipes(JSON.parse(localStorage.getItem("recipes")) || []);
     }, []);

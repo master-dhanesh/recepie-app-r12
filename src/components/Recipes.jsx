@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "./Card";
 import { Link, useLocation } from "react-router-dom";
 import { Recipecontext } from "../contexts/RecipeContext";
 const Recipes = () => {
     const [recipes, setrecipes] = useContext(Recipecontext);
     const { pathname } = useLocation();
-    console.log(recipes);
+
+    useEffect(() => {
+        setrecipes(JSON.parse(localStorage.getItem("recipes")) || []);
+    }, []);
+
     return (
         <div className=" ">
             <h1 className="text-center text-2xl font-semibold">OUR RECIPES</h1>
