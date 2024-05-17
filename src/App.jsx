@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "./components/Nav";
 
 import { Route, Routes } from "react-router-dom";
@@ -9,8 +9,16 @@ import Create from "./components/Create";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Update from "./components/Update";
+import { useDispatch } from "react-redux";
+import { asyncgetrecipies } from "./store/actions/recipeActions";
 
 const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(asyncgetrecipies());
+    }, []);
+
     return (
         <div className="w-[80%] m-auto ">
             <Nav />

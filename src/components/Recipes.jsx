@@ -1,14 +1,9 @@
-import React, { useContext, useEffect } from "react";
 import Card from "./Card";
 import { Link, useLocation } from "react-router-dom";
-import { Recipecontext } from "../contexts/RecipeContext";
+import { useSelector } from "react-redux";
 const Recipes = () => {
-    const [recipes, setrecipes] = useContext(Recipecontext);
+    const { recipes } = useSelector((state) => state.recipeReducer);
     const { pathname } = useLocation();
-
-    useEffect(() => {
-        setrecipes(JSON.parse(localStorage.getItem("recipes")) || []);
-    }, []);
 
     return (
         <div className=" ">
