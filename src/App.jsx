@@ -10,13 +10,13 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Update from "./components/Update";
 import { useDispatch } from "react-redux";
-import { asyncgetrecipies } from "./store/actions/recipeActions";
+import { asyncAddRecipe } from "./store/actions/recipeActions";
 
 const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(asyncgetrecipies());
+        dispatch(asyncAddRecipe());
     }, []);
 
     return (

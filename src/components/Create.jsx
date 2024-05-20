@@ -1,14 +1,26 @@
 import { nanoid } from "nanoid";
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncgetrecipies } from "../store/actions/recipeActions";
+=======
+import React, { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncAddRecipe } from "../store/actions/recipeActions";
+>>>>>>> 0f20ea1 (Add: Update & Delete)
 
 const Create = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+<<<<<<< HEAD
     const { recipes } = useSelector((state) => state.recipeReducer);
+=======
+    const recipes = useSelector(state => state.recipeSlice.recipes);
+>>>>>>> 0f20ea1 (Add: Update & Delete)
 
     const [image, setimage] = useState("");
     const [title, settitle] = useState("");
@@ -26,12 +38,23 @@ const Create = () => {
             ingredients,
             instructions,
         };
+<<<<<<< HEAD
 
+=======
+        // sets the data in the localStorge of the browser
+>>>>>>> 0f20ea1 (Add: Update & Delete)
         localStorage.setItem(
             "recipes",
             JSON.stringify([...recipes, newRecipe])
         );
+<<<<<<< HEAD
         dispatch(asyncgetrecipies());
+=======
+
+        // dispatch the action to the reducer
+        dispatch(asyncAddRecipe(newRecipe));
+
+>>>>>>> 0f20ea1 (Add: Update & Delete)
         toast.success("Recipe Created Successfully!");
         navigate("/recipes");
     };
