@@ -1,12 +1,14 @@
-import { useContext, useState } from "react";
-import { Recipecontext } from "../contexts/RecipeContext";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncAddRecipe } from "../store/actions/recipeActions";
 
 const Update = () => {
     const navigate = useNavigate();
     const params = useParams();
-    const [recipes, setrecipes] = useContext(Recipecontext);
+    const dispatch = useDispatch();
+    const recipes = useSelector( state => state.recipeSlice.recipes );
     const recipe = recipes && recipes.find((r) => r.id == params.id);
 
     const [image, setimage] = useState(recipe.image);
@@ -28,9 +30,9 @@ const Update = () => {
         const copyRecipe = [...recipes];
         const recipeIndex = recipes.findIndex((r) => r.id == params.id);
         copyRecipe[recipeIndex] = updatedRecipe;
-        setrecipes(updatedRecipe);
-
         localStorage.setItem("recipes", JSON.stringify(copyRecipe));
+
+        dispatch(asyncAddRecipe(copyRecipe));
         toast.success("Recipe Updated Successfully!");
         navigate("/recipes");
     };
